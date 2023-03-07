@@ -1,0 +1,27 @@
+.login {
+  overflow: hidden;
+  &__logo {
+    display: flex;
+    justify-content: center;
+  }
+  &__title {
+    font-size: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 100px 50px 0 50px;
+  }
+  p {
+    text-align: center;
+    color: #656565;
+  }
+  h1 {
+    text-align: center;
+    color: #656565;
+    font-weight: 700;
+  }
+}
+
+#loading {
+  display: none;
+}

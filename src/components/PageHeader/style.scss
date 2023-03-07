@@ -1,0 +1,60 @@
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding: 0 20px;
+  border-bottom: 1px solid #e9e9e9;
+  flex-direction: row;
+  position: static;
+}
+
+.burger {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 20px;
+  cursor: pointer;
+  &__top {
+    width: 100%;
+    height: 3px;
+    background-color: black;
+  }
+  &__middle {
+    width: 100%;
+    height: 3px;
+    background-color: black;
+  }
+  &__bottom {
+    width: 75%;
+    height: 3px;
+    background-color: black;
+  }
+}
+
+.strawberry {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 30px;
+  height: 20px;
+  cursor: pointer;
+  &__top {
+    width: 100%;
+    height: 3px;
+    background-color: black;
+  }
+  &__middle {
+    width: 75%;
+    height: 3px;
+    background-color: black;
+  }
+  &__bottom {
+    width: 50%;
+    height: 3px;
+    background-color: black;
+  }
+}

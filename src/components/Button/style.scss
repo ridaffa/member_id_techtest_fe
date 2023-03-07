@@ -1,0 +1,15 @@
+button {
+  margin-top: 1rem;
+  padding: 15px 50px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  &.dark {
+    background-color: #656565;
+    color: #fff;
+  }
+  &.light {
+    background-color: #fff;
+    color: #656565;
+  }
+}
