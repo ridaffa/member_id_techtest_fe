@@ -5,6 +5,8 @@ import Login from './pages/LoginPage/LoginPage';
 import AwardPage from './pages/AwardPage/AwardPage';
 import Sidebar from './components/Sidebar/Sidebar';
 import ProtectedPage from './pages/ProtectedPage/ProtectedPage';
+import { LogoutPage } from './pages/LogoutPage/LogoutPage';
+import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 
 function App() {
   return (
@@ -14,7 +16,9 @@ function App() {
         <Route element={<Sidebar />}>
           <Route path='/awards' element={<AwardPage />} />
         </Route>
+        <Route path='/logout' element={<LogoutPage />} />
       </Route>
+      <Route path='*' element={<NotFoundPage />} />
     </Routes>
   );
 }
