@@ -9,11 +9,16 @@ import { Input } from '../../components/Input/Input';
 import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
 import { Toaster, toast } from 'react-hot-toast';
 import { useCookies } from 'react-cookie';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 export default function Login() {
+  const navigate = useNavigate();
   const emailRef = createRef<HTMLInputElement>();
   const [loading, setLoading] = useState(false);
-  const setCookie = useCookies(['jwt'])[1];
+  const [cookie, setCookie] = useCookies(['jwt']);
+  if (cookie && cookie.jwt) {
+    return <Navigate to={'/awards'} />;
+  }
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (emailRef.current?.value) {
@@ -36,6 +41,7 @@ export default function Login() {
             path: '/',
             expires: new Date(data.message.expiredIn - 1000 * 60 * 60),
           });
+          navigate('/awards');
         })
         .catch((e) => {
           toast.error(e.message);

@@ -1,4 +1,4 @@
-import { Outlet, useNavigate } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import logo from '../../assets/logo.png';
 import SidebarConsumer from '../../contexts/SidebarContext';
 import { NavLink } from 'react-router-dom';
@@ -7,7 +7,6 @@ import './style.scss';
 type Props = {};
 
 export default function Sidebar({}: Props) {
-  const navigate = useNavigate();
   const sidebarConsumer = SidebarConsumer();
   const handleCollapse = () => {
     sidebarConsumer.setSidebar?.(!sidebarConsumer.sidebar);
