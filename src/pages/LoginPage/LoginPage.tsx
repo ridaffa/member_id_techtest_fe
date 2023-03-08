@@ -23,7 +23,7 @@ export default function Login() {
     event.preventDefault();
     if (emailRef.current?.value) {
       setLoading(true);
-      fetch(`${process.env.REACT_APP_BE_URL}/api/user/login`, {
+      fetch(`${process.env.REACT_APP_BE_URL}/user/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

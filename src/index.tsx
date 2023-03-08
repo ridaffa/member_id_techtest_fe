@@ -5,17 +5,21 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import { SidebarProvider } from './contexts/SidebarContext';
+import { Provider } from 'react-redux';
+import { store } from './stores';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <SidebarProvider>
-        <App />
-      </SidebarProvider>
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
+        <SidebarProvider>
+          <App />
+        </SidebarProvider>
+      </BrowserRouter>
+    </Provider>
   </React.StrictMode>
 );
 
