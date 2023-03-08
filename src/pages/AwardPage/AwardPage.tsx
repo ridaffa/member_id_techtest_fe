@@ -189,7 +189,7 @@ export default function AwardPage() {
         {pagination.data.length === 0 &&
         paginationLoading === false &&
         pageContent.length === 0 ? (
-          <div>No data</div>
+          <div>No Awards Found</div>
         ) : null}
       </div>
     </div>
