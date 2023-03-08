@@ -4,9 +4,8 @@
   position: relative;
   width: 100%;
   max-width: 768px;
-  height: 100vh;
   &__sidebar {
-    position: absolute;
+    position: fixed;
     width: 100%;
     z-index: 1000;
     display: flex;
@@ -23,7 +22,7 @@
   flex-direction: column;
   justify-content: flex-start;
   background-color: white;
-  width: 75%;
+  width: 300px;
   padding-top: 100px;
   padding-left: 50px;
   &__header {

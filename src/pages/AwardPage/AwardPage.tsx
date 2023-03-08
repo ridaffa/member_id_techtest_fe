@@ -20,7 +20,7 @@ import { formatNumber } from '../../helper/numberFormatter';
 export default function AwardPage() {
   const cookie = useCookies(['jwt'])[0];
   const removeCookie = useCookies(['jwt'])[2];
-  const { pagination, paginationLoading, paginationError } = useSelector(
+  const { pagination, paginationLoading } = useSelector(
     (state: RootState) => state.awardPagination
   );
   const [pageContent, setPageContent] = useState<IAward[]>([]);
@@ -28,12 +28,12 @@ export default function AwardPage() {
   const [param, setParam] = useState<IAwardFindPagination>({
     jwt: cookie?.jwt,
     page: 1,
-    limit: 10,
+    limit: 3,
     minPoint: 0,
     maxPoint: 10000000,
     awardTypes: [],
   });
-  useEffect(() => {
+  const fetchAwards = () => {
     awardDispatch(fetchAwardsPagination(param))
       .then((res) => {
         if (res.payload === 'unauthorized') {
@@ -49,22 +49,53 @@ export default function AwardPage() {
       .then((res) => {
         if (res) {
           const n = res as IResponse;
-          setPageContent(n.message.data);
+          setPageContent((prev) => {
+            return [...prev, ...n.message.data];
+          });
         }
       })
       .catch((e) => {
         toast.error(e.message);
       });
-  }, []);
+  };
+  useEffect(() => {
+    const controller = new AbortController();
+    fetchAwards();
+    return () => {
+      controller.abort();
+    };
+  }, [param]);
+
+  //infinte scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      if (
+        Math.ceil(window.innerHeight + document.documentElement.scrollTop) !==
+        document.documentElement.offsetHeight
+      )
+        return;
+      if (pagination.data.length === 0) return;
+      if (pagination.data.length < pagination.limit) return;
+      if (paginationLoading) return;
+      setParam((prev) => {
+        return {
+          ...prev,
+          page: prev.page + 1,
+        };
+      });
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [pagination]);
   return (
     <div className='page awards'>
       <Toaster />
       <PageHeader title='Awards' />
       <div className='page__content'>
-        {pageContent.map((award) => {
+        {pageContent.map((award, index) => {
           return (
             <Card
-              key={award.id}
+              key={index}
               title={award?.product?.name || award?.voucher?.name || ''}
               type={award.award_type.name}
               point={`${formatNumber(award.points)} Poin`}
@@ -72,6 +103,12 @@ export default function AwardPage() {
             ></Card>
           );
         })}
+        {paginationLoading ? <div>Loading...</div> : null}
+        {pagination.data.length === 0 &&
+        paginationLoading === false &&
+        pageContent.length === 0 ? (
+          <div>No data</div>
+        ) : null}
       </div>
     </div>
   );
