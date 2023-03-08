@@ -1,7 +1,7 @@
 import './style.scss';
 
 type Props = {
-  className?: 'light' | 'dark';
+  className?: 'light' | 'dark' | 'blue';
   type: 'submit' | 'reset' | 'button';
   text: string;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;

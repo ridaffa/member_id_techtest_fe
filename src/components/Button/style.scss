@@ -2,14 +2,20 @@ button {
   margin-top: 1rem;
   padding: 15px 50px;
   border: none;
-  border-radius: 5px;
   font-size: 1rem;
   &.dark {
     background-color: #656565;
     color: #fff;
+    border-radius: 10px;
   }
   &.light {
     background-color: #fff;
     color: #656565;
+    border-radius: 10px;
+  }
+  &.blue {
+    background-color: #1e90ff;
+    color: #fff;
+    border-radius: 10px;
   }
 }

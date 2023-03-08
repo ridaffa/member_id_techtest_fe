@@ -12,8 +12,8 @@ export default function PageHeader({ title, onClickStrawberry }: Props) {
     sidebarConsumer.setSidebar?.(!sidebarConsumer.sidebar);
   };
   return (
-    <div onClick={onClickBurger} className='page-header'>
-      <div className='burger'>
+    <div className='page-header'>
+      <div onClick={onClickBurger} className='burger'>
         <div className='burger__top'></div>
         <div className='burger__middle'></div>
         <div className='burger__bottom'></div>

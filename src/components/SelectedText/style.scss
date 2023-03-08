@@ -1,0 +1,29 @@
+.selected-text {
+  padding: 0px 10px;
+  height: 30px;
+  border: 2px solid blue;
+  border-radius: 5px;
+  width: fit-content;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  color: blue;
+  font-weight: bold;
+  &.open {
+    cursor: pointer;
+  }
+  &__close {
+    cursor: pointer;
+    background-color: blue;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 0.75rem;
+  }
+}
