@@ -13,3 +13,7 @@ Once the dependencies have been installed, create a `.env` file based on the `.e
 # Run with npm
 
 Once everything is set up, you can run your React TypeScript application with the `npm run start` command. This command will start the development server and open the application in your default browser.
+
+# Pagination
+
+For this project, I will be using infinite scrolling to load more data. This is a common pattern in web applications, and it is a great way to load more data without having to refresh the page.
